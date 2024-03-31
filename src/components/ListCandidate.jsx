@@ -3,6 +3,7 @@ import Candidate from "./Candidate.jsx";
 import {Chip, List, ListItem} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import {saveValue} from "../store/slices";
+import {Link} from "react-router-dom";
 
 const ListCandidate = () => {
     const [candidates, setCandidates] = useState([]);
@@ -39,16 +40,9 @@ const ListCandidate = () => {
                 )}
             </List>
 
-            {empList.map((value, idx) => {
-                return (
-                    <Chip
-                        key={idx}
-                        label={value.name.first}
-                        component="a"
-                        href="/management" clickable
-                    />
-                )
-            })}
+            {empList.map((value, idx) =>
+                <Link key={idx} to="/management"> <Chip label={value.name.first} /> </Link>
+            )}
 
         </>
     );
